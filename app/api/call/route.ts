@@ -36,7 +36,7 @@ async function createOutboundCall() {
     callInvite,
     (process.env.NODE_ENV === "development"
       ? process.env.CALLBACK_URI
-      : process.env.NEXT_PUBLIC_URL) + "api/callback",
+      : process.env.PUBLIC_URL) + "api/callback",
     options
   );
   return result;
@@ -50,8 +50,8 @@ export async function POST(req: Request) {
       phoneNumber,
     };
 
-    // const result = await createOutboundCall();
-    await setCalleeDetail(phoneNumber, {
+    const result = await createOutboundCall();
+    await setCalleeDetail(result.callConnectionProperties.serverCallId!, {
       firstName,
       lastName,
       topic,
