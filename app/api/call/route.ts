@@ -57,12 +57,11 @@ export async function POST(req: Request) {
         lastName,
         topic,
       });
+      return NextResponse.json(
+        { data: result.callConnectionProperties },
+        { status: 200 }
+      );
     }, 15000);
-
-    return NextResponse.json(
-      { data: result.callConnectionProperties },
-      { status: 200 }
-    );
   } catch (error) {
     console.log(error);
     return NextResponse.json({ error }, { status: 500 });
