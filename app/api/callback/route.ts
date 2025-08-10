@@ -116,7 +116,7 @@ export async function POST(req: Request) {
 
     console.log("Received CallConnected event");
     if (callees && callees.length > 0) {
-      const calleeInfoString = await getCalleeDetail(serverCallId);
+      const calleeInfoString = await getCalleeDetail(callConnectionId);
       const calleeInfo = await JSON.parse(calleeInfoString!);
       const callText = `Hello ${calleeInfo.firstName} ${calleeInfo.lastName}, this is Bath Fitter, we’re calling to follow up with you regarding your interest in ${calleeInfo.topic}. Please say confirm if you want to be connected to our representative or say cancel if no longer need our service.`;
       await startRecognizing(callees[0].identifier!, callMedia, callText, "");

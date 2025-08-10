@@ -50,12 +50,15 @@ export async function POST(req: Request) {
       phoneNumber,
     };
 
-    const result = await createOutboundCall();
-    await setCalleeDetail(result.callConnectionProperties.serverCallId!, {
-      firstName,
-      lastName,
-      topic,
-    });
+    const result: CallResult = await createOutboundCall();
+    setTimeout(async () => {
+      await setCalleeDetail(result.callConnectionProperties.callConnectionId!, {
+        firstName,
+        lastName,
+        topic,
+      });
+    }, 10000);
+
     return NextResponse.json(
       { data: result.callConnectionProperties },
       { status: 200 }
