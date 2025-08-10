@@ -57,7 +57,7 @@ export async function POST(req: Request) {
         lastName,
         topic,
       });
-    }, 10000);
+    }, 15000);
 
     return NextResponse.json(
       { data: result.callConnectionProperties },
