@@ -51,8 +51,8 @@ export async function POST(req: Request) {
     };
 
     const result: CallResult = await createOutboundCall();
-    setTimeout(async () => {
-      await setCalleeDetail(result.callConnectionProperties.callConnectionId!, {
+    setTimeout(() => {
+      setCalleeDetail(result.callConnectionProperties.callConnectionId!, {
         firstName,
         lastName,
         topic,
