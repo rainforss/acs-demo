@@ -8,7 +8,12 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+env:
+    CONNECTION_STRING: 'endpoint=https://sms-acs-demo.canada.communication.azure.com/;accesskey=C206JCSg1iUEQzKBqrnapWhqE9LO2wGOab1Ru8CC5me5IgaP2RKqJQQJ99BFACULyCpvTPyMAAAAAZCS1iCI'
+    ACS_RESOURCE_PHONE_NUMBER: '+14388140297'
+    COGNITIVE_SERVICES_ENDPOINT: 'https://sms-demo-multi-ai-service-classic.cognitiveservices.azure.com/'
+    REDIS_CONNECTION_STRING: 'redis://default:b7tA6vMnf4GPckK85BvIyCPFeqze8zQJ@redis-14401.c92.us-east-1-3.ec2.redns.redis-cloud.com:14401'
+    PUBLIC_URL: 'sms-call-automation-bjgua5g7hjg3craw.canadacentral-01.azurewebsites.net'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -52,4 +57,5 @@ jobs:
           app-name: 'sms-call-automation'
           slot-name: 'Production'
           package: .
+
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2B86BA473B3841CEA5E3132C4FE11B6C }}
