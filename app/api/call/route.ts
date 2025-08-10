@@ -16,6 +16,9 @@ import {
 import acsClient from "@/app/utils/acs";
 import { setCalleeDetail } from "@/app/utils/redis";
 
+export const maxDuration = 50; // 50 seconds
+export const dynamic = "force-dynamic";
+
 let callee: PhoneNumberIdentifier;
 
 async function createOutboundCall() {
